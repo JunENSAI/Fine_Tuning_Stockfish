@@ -5,7 +5,7 @@ import chess.engine
 app = Flask(__name__)
 
 STOCKFISH_PATH = "/usr/games/stockfish" 
-DEPTH = 14 
+DEPTH = 10 
 
 print("Démarrage du moteur Stockfish...")
 try:
