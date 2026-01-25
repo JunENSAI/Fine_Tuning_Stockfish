@@ -57,25 +57,21 @@
         var $gameMessage = $('#game-message')
 
         function onDragStart (source, piece, position, orientation) {
-            // Interdit de bouger si la partie est finie ou si c'est pas ton tour
             if (game.game_over()) return false
-            if (piece.search(/^b/) !== -1) return false // Tu ne peux bouger que les blancs
+            if (piece.search(/^b/) !== -1) return false
         }
 
         function onDrop (source, target) {
-            // Vérifie si le coup est légal localement
             var move = game.move({
                 from: source,
                 to: target,
-                promotion: 'q' // Promotion auto en Reine pour simplifier
+                promotion: 'q'
             })
 
-            // Si coup illégal, on remet la pièce à sa place
             if (move === null) return 'snapback'
 
             updateStatus()
             
-            // C'est au tour du Bot
             makeBotMove()
         }
 
@@ -105,29 +101,23 @@
             $status.html(status)
         }
 
-        // --- C'est ici que JS parle à ton Java ---
         async function makeBotMove() {
             if (game.game_over()) return;
 
             $botThinking.show();
             $gameMessage.text("Analyse en cours...");
 
-            // On encode le FEN pour l'URL (espaces -> %20)
             const currentFen = encodeURIComponent(game.fen());
             
             try {
-                // Appel à ton API Java
                 const response = await fetch(`/api/bot/move?fen=${currentFen}`);
                 const botMoveUCI = await response.text();
 
                 console.log("Le bot veut jouer : " + botMoveUCI);
 
-                // Java renvoie parfois "UNKNOWN" ou un code erreur, on gère ça
                 if(botMoveUCI.includes("UNKNOWN") || botMoveUCI.length < 4) {
                     $gameMessage.text("Le bot a abandonné (Erreur interne)");
                 } else {
-                    // Joue le coup du bot (format e2e4)
-                    // On utilise {sloppy: true} pour accepter le format UCI
                     game.move(botMoveUCI, { sloppy: true });
                     board.position(game.fen());
                     $gameMessage.text("Le bot a joué " + botMoveUCI);

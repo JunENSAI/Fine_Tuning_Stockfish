@@ -23,4 +23,12 @@ public class BotController {
     public String getMove(@RequestParam String fen) {
         return botService.decideMove(fen);
     }
+
+    @GetMapping("/start")
+    public String startGame(@RequestParam String userColor) {
+        if ("black".equalsIgnoreCase(userColor)) {
+            return botService.getOpeningMove();
+        }
+        return "WAITING_FOR_USER"; 
+    }
 }

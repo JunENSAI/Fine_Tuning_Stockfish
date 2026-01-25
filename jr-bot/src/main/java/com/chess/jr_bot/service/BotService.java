@@ -65,4 +65,23 @@ public class BotService {
             return "0000";
         }
     }
+
+    /**
+     * Méthode spéciale pour trouver un coup d'ouverture varié
+     * (Utilisé surtout quand le Bot a les Blancs au 1er tour)
+     */
+    public String getOpeningMove() {
+        String startFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"; 
+        
+        List<MoveEntity> openingMoves = moveRepository.findByFenStartingWith(startFen);
+
+        if (openingMoves.isEmpty()) {
+            return "d2d4"; 
+        }
+        
+        MoveEntity selected = openingMoves.get(random.nextInt(openingMoves.size()));
+        System.out.println("BOT (BLANCS) DEMARRE AVEC : " + selected.getPlayedMove());
+        
+        return selected.getPlayedMove();
+    }
 }
