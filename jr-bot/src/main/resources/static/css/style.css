@@ -87,3 +87,61 @@ button:hover { opacity: 0.8; }
 .pb-win { background: #4caf50; height: 100%; }
 .pb-draw { background: #90a4ae; height: 100%; }
 .pb-loss { background: #e57373; height: 100%; }
+
+/* Modale */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); z-index: 1000;
+    display: flex; justify-content: center; align-items: center;
+}
+.modal-content {
+    background: #3c3c3c; padding: 30px; border-radius: 10px;
+    text-align: center; width: 300px;
+}
+.option-group { margin-bottom: 20px; text-align: left; }
+.option-group label { display: block; margin-bottom: 5px; color: #aaa; }
+.option-group select { width: 100%; padding: 8px; border-radius: 5px; }
+.btn-group button { width: 48%; }
+.btn-group button.selected { border: 2px solid #4caf50; background: #555; }
+.start-btn { width: 100%; padding: 12px; font-size: 1.1em; margin-top: 10px; }
+
+/* Cartes Joueurs */
+.game-container { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.player-card {
+    display: flex; align-items: center; gap: 15px;
+    width: 500px; background: #333; padding: 10px; border-radius: 8px;
+    position: relative; /* Pour la bulle */
+}
+.avatar { font-size: 2.5rem; background: #444; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%; }
+.player-info { flex-grow: 1; display: flex; justify-content: space-between; align-items: center; }
+.name { font-weight: bold; color: #fff; }
+.clock {
+    font-family: 'Courier New', monospace; font-size: 1.5rem;
+    background: #000; color: #0f0; padding: 5px 10px; border-radius: 4px;
+    border: 1px solid #555; width: 80px; text-align: center;
+}
+.active-clock { color: #fff; background: #c62828; border-color: #ff5252; animation: pulse 1s infinite; }
+
+/* Chat du Bot */
+.chat-bubble {
+    position: absolute; top: -50px; left: 60px;
+    background: #fff; color: #000; padding: 10px; border-radius: 15px;
+    font-size: 0.9em; max-width: 200px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+.chat-bubble::after {
+    content: ''; position: absolute; bottom: -10px; left: 20px;
+    border-width: 10px 10px 0; border-style: solid; border-color: #fff transparent;
+}
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
+
+/* Remplace l'ancienne classe .avatar par celle-ci pour les images */
+.avatar-img {
+    width: 50px;           /* Largeur fixée (Taille optimale) */
+    height: 50px;          /* Hauteur fixée */
+    border-radius: 50%;    /* Rend l'image parfaitement ronde */
+    object-fit: cover;     /* IMPORTANT : Rogne l'image pour qu'elle ne soit pas déformée */
+    border: 2px solid #4caf50; /* Petit bord vert pour faire "Connecté" */
+    background: #444;      /* Couleur de fond si l'image est transparente */
+}

@@ -5,7 +5,7 @@ import chess.engine
 app = Flask(__name__)
 
 STOCKFISH_PATH = "/usr/games/stockfish"
-MOVE_TIME = 0.2  # secondes
+MOVE_TIME = 0.3  # secondes
 
 print("Démarrage du moteur Stockfish...")
 try:
@@ -13,7 +13,7 @@ try:
 
     engine.configure({
         "UCI_LimitStrength": True,
-        "UCI_Elo": 1800
+        "UCI_Elo": 1900
     })
 
 except Exception as e:

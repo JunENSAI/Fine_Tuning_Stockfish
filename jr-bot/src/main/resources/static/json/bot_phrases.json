@@ -1,0 +1,40 @@
+{
+  "intro": [
+    "Prêt à perdre ?",
+    "Je ne ferai pas d'erreur cette fois.",
+    "Montre-moi ce que tu sais faire."
+  ],
+  "capture": [
+    "Oups, c'était ta pièce préférée ?",
+    "Tocard",
+    "Quand même",
+    "Miam !",
+    "Tu n'en avais pas besoin de toute façon."
+  ],
+  "check": [
+    "Attention à ton Roi !",
+    "Echec.",
+    "Tu transpires ?"
+  ],
+  "win": [
+    "Be proud, you are strong.",
+    "L'humain s'incline devant la machine.",
+    "C'était une belle tentative."
+  ],
+  "loss": [
+    "Impossible... mes calculs...",
+    "Bien joué, humain.",
+    "Je demande une revanche !",
+    "Sensei, teach me !"
+  ],
+  "timeout": [
+    "Le temps est écoulé !",
+    "Tic tac... c'est fini."
+  ],
+  "draw": [
+    "Match nul ? Je n'aime pas partager.",
+    "Tu es moi.",
+    "Tu t'en sors bien cette fois.",
+    "I offer the draw, not you."
+  ]
+}
