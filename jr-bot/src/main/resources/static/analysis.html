@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyse - JRRZF</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <button onclick="window.location.href='dashboard.html'" class="btn-back">⬅ Dashboard</button>
+    
+    <div class="analysis-container">
+        <div class="sidebar" id="games-list">
+            <h3 style="text-align:center; border-bottom:1px solid #555; padding-bottom:10px;">Mes Parties</h3>
+            <div id="games-container">Chargement...</div>
+        </div>
+
+        <div class="board-area">
+            <h2 id="game-title">Sélectionnez une partie</h2>
+            
+            <div class="board-wrapper">
+                <div class="eval-container">
+                    <div class="eval-bar-black" id="eval-black"></div>
+                    <div class="eval-bar-white" id="eval-white"></div>
+                    <span class="eval-score" id="eval-score">0.0</span>
+                </div>
+                <div id="board" style="width: 500px;"></div>
+            </div>
+
+            <div class="best-move" id="best-move-display">Stockfish: En attente...</div>
+
+            <div class="controls">
+                <button class="btn-secondary" onclick="firstMove()">⏮</button>
+                <button class="btn-secondary" onclick="prevMove()">◀</button>
+                <button class="btn-secondary" onclick="nextMove()">▶</button>
+                <button class="btn-secondary" onclick="lastMove()">⏭</button>
+                <button class="btn-primary" onclick="flipBoard()">🔄 Retourner</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="js/analysis.js"></script>
+</body>
+</html>

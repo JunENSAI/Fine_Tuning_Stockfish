@@ -105,4 +105,10 @@ public class GameController {
         List<GameEntity> history = gameRepository.findTop50ByWhitePlayerOrBlackPlayerOrderByDatePlayedDesc(username, username);
         return ResponseEntity.ok(history);
     }
+
+    @GetMapping("/my-games")
+    public ResponseEntity<List<GameEntity>> getMyGames(@RequestParam String username) {
+        List<GameEntity> games = gameRepository.findByWhitePlayerOrBlackPlayerOrderByDatePlayedDesc(username, username);
+        return ResponseEntity.ok(games);
+    }
 }

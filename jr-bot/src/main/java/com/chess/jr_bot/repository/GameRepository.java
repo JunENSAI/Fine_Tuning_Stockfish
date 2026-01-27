@@ -13,6 +13,8 @@ public interface GameRepository extends JpaRepository<GameEntity, Long> {
 
     List<GameEntity> findByWhitePlayerOrBlackPlayer(String whitePlayer, String blackPlayer);
 
+    List<GameEntity> findByWhitePlayerOrBlackPlayerOrderByDatePlayedDesc(String whitePlayer, String blackPlayer);
+
     List<GameEntity> findTop50ByWhitePlayerOrBlackPlayerOrderByDatePlayedDesc(String whitePlayer, String blackPlayer);
 
     @Query("SELECT COUNT(g) FROM GameEntity g WHERE " +
